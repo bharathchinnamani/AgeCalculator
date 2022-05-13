@@ -4,9 +4,10 @@ let date1;
 let datenow;
 let intervalId;
 function calcAge()
-{   let count=0;
+{   clearInterval(intervalId);
+    let count=0;
     givenDate=document.querySelector("#dob").value;
-        if(givenDate===""){document.querySelector("#no-input").innerHTML=`<h4 style="margin:auto;padding:25px;">Sorry!<br>please enter your age.</h4>`;
+        if(givenDate===""){document.querySelector("#no-input").innerHTML=`<h4 style="margin:auto;padding:25px;">Sorry!<br>please enter date of birth.</h4>`;
         resetPartial();
         return null;}
         date1=new Date(givenDate);
@@ -36,7 +37,7 @@ function calcAge()
         let month=Math.floor(day/30.4375);
         let year=(day/365.25);
         year=year.toFixed(2);
-        if(count===0){document.querySelector("#lab").innerHTML=`<h4>Date of birth : ${date1.toLocaleDateString()}</h4>`;count++;}
+        if(count===0){document.querySelector("#lab").innerHTML=`<h4>Date of birth : ${date1.toDateString()}</h4>`;count++;}
         
         assigning("#year-res",year,"Years");
         assigning("#month-res",month,"Months");
@@ -45,10 +46,9 @@ function calcAge()
         assigning("#hour-res",hour,"Hours");
         assigning("#min-res",min,"Minutes");
         assigning("#sec-res",sec,"Seconds");
-        
+         
     }
     intervalId=setInterval(update,1000);
-        
     }
 
 
@@ -85,4 +85,5 @@ function resetPartial()
     document.querySelector("#lab").innerHTML=`<label for="dob">Hi Friend! Kindly Enter your date of birth.
     </label>`;
 }
+   
    
